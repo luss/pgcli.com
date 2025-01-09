@@ -6,7 +6,7 @@ Install
 Compatibility:
 ==============
 
-Tested on macOS and Linux. Runs on Python 3.6+.
+Tested on macOS and Linux. Runs on Python 3.8+.
 
 I have not personally tested this on Windows, but all the underlying libraries
 used by this project are cross-platform compatible including Windows. If you
@@ -110,14 +110,23 @@ Debian based systems (Debian, Ubuntu, Mint etc)
 
     $ sudo apt-get install python-pip
 
-For Redhat based systems (Fedora, Centos, RHEL etc)
+For Redhat based systems (Fedora, Centos, Rocky, Alma, RHEL etc)
 
 .. code:: bash
 
     $ sudo yum install python-pip
 
-Pgcli uses ``psycopg`` to talk to postgres database. In order to install
-psycopg, you will need libpq and python-dev installed on your system. Since
+Upgrade pip to a recent version
+
+.. code:: bash
+  
+    $ pip3 install --upgrade pip
+
+Pgcli uses ``psycopg`` to talk to the postgres database.
+On current Operating Systems, it is extermely likely you will be fine running the prepackaged
+psycopg-binary if you've upgraded to a recent version of PIP as per above..
+If you have to compile ``psycopg`` from source,
+you will need libpq and python-dev installed on your system. Since
 ``psycopg`` is a C extension for Python, a C compiler is needed to install it
 on your system.
 
@@ -135,20 +144,6 @@ Now that the required dependencies are satisfied you are ready to install
 .. code:: bash
 
     $ sudo pip install pgcli
-
-What about psycopg2-binary:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-``Psycopg2`` maintainers do not recommend using binary package version for production,
-this is why ``pgcli`` specifies the source package (``psycopg2``) as dependency, vs ``psycopg2-binary``:
-
-http://initd.org/psycopg/docs/install.html#binary-install-from-pypi
-
-However, this workaround may help if you're unable to build the source ``psycopg2`` package:
-
-.. code:: bash
-
-    $ pip install pgcli --only-binary psycopg2
 
 If you're still having trouble getting ``pgcli`` installed, please feel free to `contact
 <{filename}/pages/6.about.rst>`_ me.
